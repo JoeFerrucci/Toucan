@@ -594,9 +594,10 @@ public class Toucan : NSObject {
         - returns: Image pulled from the end of the closure
         */
         static func drawImageWithClosure(size size: CGSize!, closure: (size: CGSize, context: CGContext) -> ()) -> UIImage {
-            UIGraphicsBeginImageContextWithOptions(size, false, 0)
-            closure(size: size, context: UIGraphicsGetCurrentContext()!)
-            let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+            let aSize = size
+            UIGraphicsBeginImageContextWithOptions(aSize, false, 0)
+            closure(size: aSize, context: UIGraphicsGetCurrentContext()!)
+            let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             return image
         }
